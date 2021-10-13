@@ -9,23 +9,33 @@
             rel="stylesheet"
             href="https://unpkg.com/modern-normalize@1.1.0/modern-normalize.css"
         />
+        <!-- TODO 1: include main script file -->
+        <script src="main.js" type="module" defer></script>
     </head>
-    <body>
-        <header>
+    <body style="margin: 1em">
+        <header data-vue>
             <a href="#">LOGO</a>
+            <hello-world></hello-world>
         </header>
 
-        <main>
+        <!-- TODO 5: add another app with data -->
+        <main data-vue='{ "customIncrement": 1 }'>
             <h1>Sprinkling Vue 2</h1>
+            <hello-world></hello-world>
+
+            <!-- TODO 8: Use component -->
+            <click-counter :increment="customIncrement">Apples</click-counter>
 
             <h2>Heading</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
-                itaque perferendis. Consequuntur minima animi, recusandae, id
-                tempore facere iusto sapiente harum quaerat excepturi reiciendis
-                a distinctio asperiores rerum aperiam tenetur.
-            </p>
+
+            <!-- TODO 7: interact with app data-->
+            <label for="increment">Increment by</label>
+            <input v-model="customIncrement" type="number" id="increment" />
+
+            <p>{{ customIncrement }}</p>
+
             <img src="https://picsum.photos/300/200" alt="" />
+
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
                 itaque perferendis. Consequuntur minima animi, recusandae, id
@@ -33,7 +43,11 @@
                 a distinctio asperiores rerum aperiam tenetur.
             </p>
 
-            <h3>Heading</h3>
+            <h2>Heading</h2>
+
+            <!-- TODO 9: Use component again -->
+            <click-counter :increment="customIncrement">Oranges</click-counter>
+
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
                 itaque perferendis. Consequuntur minima animi, recusandae, id
@@ -64,6 +78,13 @@
             </p>
         </main>
 
-        <footer>&copy Pete Davis</footer>
+        <!-- TODO 4: add an app to the page -->
+        <footer data-vue>
+            <hello-world></hello-world>
+            &copy {{ (new Date()).getFullYear() }} Pete Davis
+
+            <!-- TODO 10: use component in another vue app -->
+            <click-counter :increment="5">Limes</click-counter>
+        </footer>
     </body>
 </html>
